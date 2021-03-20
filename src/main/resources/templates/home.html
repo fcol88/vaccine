@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th:="http://www.thymeleaf.org">
+<head th:replace="fragments/base :: head('Is everyone vaccinated?')"></head>
+<body>
+
+	<section class="hero is-fullheight"
+		th:classappend="${secondVax == all} ? 'is-primary' : 'is-warning'">
+		<div th:replace="fragments/base :: navbar('home')"></div>
+		<div class="hero-body">
+			<div class="container">
+				<div class="columns is-centered">
+					<div class="column is-half">
+						<h1 class="title has-text-centered">Is everyone vaccinated?</h1>
+						<div class="block has-text-centered">
+							<p class="has-text-weight-bold" style="font-size: 6rem;"
+								th:text="${secondVax == all} ? 'Yes' : 'No'"></p>
+						</div>
+						<div class="block">
+							<p>
+								There <span th:text="${all &gt; 1 or all == 0} ? 'are' : 'is'">ix</span>
+								<span class="has-text-weight-semibold"
+									th:text="${#numbers.formatDecimal(all, 1, 0)}"></span> <span
+									th:text="${all &gt; 1 or all == 0} ? 'friends' : 'friend'">friend</span>
+								being counted.
+							</p>
+						</div>
+						<div class="block">
+							<p th:unless="${all &gt; 1}">
+								<th:block th:switch="1">
+									<span th:case="${unVax}">They're not vaccinated.</span>
+									<span th:case="${firstVax}">They've had their first
+										vaccine.</span>
+									<span th:case="${secondVax}">They're vaccinated!</span>
+								</th:block>
+							</p>
+							<p th:if="${all &gt; 1}">
+								Of the <span class="has-text-weight-semibold"
+									th:text="${#numbers.formatDecimal(all, 1, 0)}"></span> <span
+									th:text="${all &gt; 1 or all == 0} ? 'friends' : 'friend'">friend</span>,
+								<span class="has-text-weight-semibold"
+									th:text="${#numbers.formatDecimal(secondVax, 1, 0)}"></span> <span
+									th:if="${all &gt; 0}">(<span
+									class="has-text-weight-semibold"
+									th:text="${#numbers.formatPercent(secondVax/all, 1, 1)}"></span>)
+								</span> <span
+									th:text="${secondVax &gt; 1 or secondVax == 0} ? 'are' : 'is'">ix</span>
+								fully vaccinated, <span class="has-text-weight-semibold"
+									th:text="${#numbers.formatDecimal(firstVax, 1, 0)}"></span> <span
+									th:if="${all &gt; 0}">(<span
+									class="has-text-weight-semibold"
+									th:text="${#numbers.formatPercent(firstVax/all, 1, 1)}"></span>)
+								</span> <span
+									th:text="${firstVax &gt; 1 or firstVax == 0} ? 'have' : 'has'">hax</span>
+								had their first vaccine, and <span
+									class="has-text-weight-semibold"
+									th:text="${#numbers.formatDecimal(unVax, 1, 0)}"></span> <span
+									th:if="${all &gt; 0}">(<span
+									class="has-text-weight-semibold"
+									th:text="${#numbers.formatPercent(unVax/all, 1, 1)}"></span>)
+								</span><span th:text="${unVax &gt; 1 or unVax == 0} ? 'are' : 'is'">are</span>
+								still waiting to be vaccinated.
+							</p>
+						</div>
+						<div th:if="${all == secondVax}" class="block has-text-centered">
+							<p class="is-size-2 has-text-weight-semibold">Oh, frabjous day! Callooh, callay! The coronavirus has gone away!</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+</body>
+</html>

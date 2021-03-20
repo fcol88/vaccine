@@ -1,0 +1,31 @@
+{
+  "name": "vaccine",
+  "version": "1.0.0",
+  "description": "To keep track of Important Things",
+  "main": "index.js",
+  "dependencies": {
+    "bulma": "^0.9.2"
+  },
+  "devDependencies": {
+    "del": "^6.0.0",
+    "gulp": "^4.0.2",
+    "gulp-sass": "^4.1.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fcol88/vaccine.git"
+  },
+  "keywords": [
+    "vaccine",
+    "covid"
+  ],
+  "author": "matgr",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fcol88/vaccine/issues"
+  },
+  "homepage": "https://github.com/fcol88/vaccine#readme"
+}

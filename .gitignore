@@ -33,3 +33,5 @@ build/
 .vscode/
 
 mvnw.cmd
+node_modules/
+package-lock.json

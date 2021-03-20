@@ -19,11 +19,15 @@ public class MainController {
 	@GetMapping("/")
 	public ModelAndView getHome(ModelAndView model) {
 		
-		List<Friend> unVax = friendService.findAllByVaccinated(false);
-		List<Friend> vax = friendService.findAllByVaccinated(true);
+		List<Friend> unVax = friendService.findAllByVaccinated(false, false);
+		List<Friend> firstVax = friendService.findAllByVaccinated(true, false);
+		List<Friend> secondVax = friendService.findAllByVaccinated(true, true);
+		List<Friend> all = friendService.findAll();
 		
-		model.addObject("unVax", unVax.size());
-		model.addObject("vax", vax.size());
+		model.addObject("unVax", (double)unVax.size());
+		model.addObject("firstVax", (double)firstVax.size());
+		model.addObject("secondVax", (double)secondVax.size());
+		model.addObject("all", (double)all.size());
 		
 		model.setViewName("home");
 		

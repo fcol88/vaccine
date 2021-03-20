@@ -26,7 +26,7 @@ public class FriendController implements AbstractController {
 	@Autowired
 	private IFriendService friendService;
 	
-	@GetMapping("/list")
+	@GetMapping({"/","/list"})
 	public ModelAndView getList(@RequestParam(name="size", defaultValue="10") int size,
 			@RequestParam(name="page", defaultValue="1") int page, ModelAndView model) {
 		
@@ -71,6 +71,13 @@ public class FriendController implements AbstractController {
 	@PostMapping("/form")
 	public ModelAndView postForm(@Valid @ModelAttribute("friend") FriendDTO friend, 
 			BindingResult result, ModelAndView model) {
+		
+		if(!result.hasErrors() && 
+				friend.getFirstDose().equals(Boolean.FALSE) &&
+					friend.getSecondDose().equals(Boolean.TRUE)) {
+			result.rejectValue("secondDose", "error.friend", 
+					"You trying to break something? How exactly can you have your second dose first, hmm?");
+		}
 		
 		if(result.hasErrors()) { 
 			model.setViewName("friends/form");

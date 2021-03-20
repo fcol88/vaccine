@@ -15,7 +15,7 @@ import app.iwf.vaccine.entity.Friend;
 public interface IFriendRepository extends JpaRepository<Friend, Long> {
 
 	Optional<Friend> findByCode(UUID code);
-	List<Friend> findByVaccinated(boolean vaccinated);
+	List<Friend> findByFirstDosedAndSecondDosed(boolean firstDosed, boolean secondDosed);
 	Page<Friend> findAll(Pageable pageable);
 	
 }

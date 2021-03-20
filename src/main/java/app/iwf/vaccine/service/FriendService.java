@@ -53,9 +53,9 @@ public class FriendService implements IFriendService {
 	}
 
 	@Override
-	public List<Friend> findAllByVaccinated(boolean vaccinated) {
+	public List<Friend> findAllByVaccinated(boolean firstDosed, boolean secondDosed) {
 		
-		return friendRepository.findByVaccinated(vaccinated);
+		return friendRepository.findByFirstDosedAndSecondDosed(firstDosed, secondDosed);
 		
 	}
 	
@@ -71,7 +71,8 @@ public class FriendService implements IFriendService {
 		}
 		
 		friend.setName(dto.getName());
-		friend.setVaccinated(dto.getVaccinated());
+		friend.setFirstDosed(dto.getFirstDose());
+		friend.setSecondDosed(dto.getSecondDose());
 		
 		return friend;
 		

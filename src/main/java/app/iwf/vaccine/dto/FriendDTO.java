@@ -17,13 +17,16 @@ public class FriendDTO {
 	public FriendDTO(Friend friend) {
 		this.code = friend.getCode();
 		this.name = friend.getName();
-		this.vaccinated = friend.isVaccinated();
+		this.firstDose = friend.isFirstDosed();
+		this.secondDose = friend.isSecondDosed();
 	}
 	
 	private UUID code;
 	@NotEmpty(message = "Who are you?")
 	private String name;
 	@NotNull(message = "Are ya vaccinated yet, son?")
-	private Boolean vaccinated;
+	private Boolean firstDose;
+	@NotNull(message = "Are ya double-vaccinated yet, son?")
+	private Boolean secondDose;
 
 }

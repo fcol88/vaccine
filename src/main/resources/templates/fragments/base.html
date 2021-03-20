@@ -11,7 +11,7 @@
 
 <nav th:fragment="paginator(page, pageNumbers, url)"
 	class="pagination is-centered" role="navigation"
-	aria-label="pagination">
+	aria-label="pagination" th:if="${page.totalPages &gt; 1}">
 	<a class="pagination-previous" th:disabled="${page.number==0}"
 		th:href="${page.number==0} ? '#' : @{${url}(page=${page.number},size=${page.size})}">Previous</a>
 	<a class="pagination-next"
@@ -51,16 +51,26 @@
 				<span class="navbar-burger" data-target="navbarMenuHeroA">
 					<span></span>
 					<span></span>
+					<span></span>
 				</span>
 			</div>
 			<div id="navbarMenuHeroA" class="navbar-menu">
 				<div class="navbar-end">
 					<a class="navbar-item" th:href="@{/}" th:classappend="${selected == 'home'} ? is-active">Home</a>
-					<a class="navbar-item" th:href="@{/friends}" th:classappend="${selected == 'friends'} ? is-active">Friends</a>
+					<a class="navbar-item" th:href="@{/friends/form}" th:classappend="${selected == 'addfriend'} ? is-active">Add a friend</a>
+					<a class="navbar-item" th:href="@{/friends/}" th:classappend="${selected == 'friends'} ? is-active">Friends</a>
 				</div>
 			</div>
 		</div>	
 	</nav>
 </div>
+
+<th:block th:fragment="scripts">
+
+	<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+
+	<script th:src="@{/js/hamburger.js}"></script>
+
+</th:block>
 
 </html>

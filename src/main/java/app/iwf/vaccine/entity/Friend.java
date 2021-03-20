@@ -20,6 +20,7 @@ public class Friend {
 	private UUID code = UUID.randomUUID();
 	@NotEmpty
 	private String name;
-	private boolean vaccinated;
+	private boolean firstDosed;
+	private boolean secondDosed;
 
 }

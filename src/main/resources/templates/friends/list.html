@@ -8,33 +8,48 @@
 		<div class="hero-body">
 			<div class="container">
 				<div class="columns is-centered">
-					<div class="column is-three-quarters">
-						<table class="table">
+					<div class="column is-5">
+						<th:block th:if="${currentPage.empty}">
+							<div class="columns is-centered">
+								<div class="column is-half">
+									<p>
+									<span class="icon-text">
+										<span class="icon has-text-info">
+											<em class="fas fa-info-circle"></em>
+										</span>
+										<span></span>
+									</span>
+									Oh. I guess nobody's here yet. Want to add a friend?</p>
+								</div>
+							</div>
+						</th:block>
+						<table class="table is-centered" style="margin:auto" th:unless="${currentPage.empty}">
 							<caption class="is-sr-only">Friend table</caption>
 							<thead>
 								<tr>
 									<th scope="col">Name</th>
-									<th scope="col">Vaccinated?</th>
-									<th scope="col">View</th>
+									<th scope="col">Vax'd?</th>
+									<th scope="col">Double-Vax'd?</th>
 									<th scope="col">Update</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr th:each="friend : ${currentPage}">
 									<td th:text="${friend.name}"></td>
-									<td th:text="${friend.vaccinated} ? 'Yes' : 'No'"></td>
-									<td><a th:href="@{/friends/view(id=${friend.code})}">View</a></td>
-									<td><a th:href="@{/friends/edit(id=${friend.code})}">Update</a></td>
+									<td th:text="${friend.firstDosed} ? 'Yes' : 'No'"></td>
+									<td th:text="${friend.secondDosed} ? 'Yes' : 'No'"></td>
+									<td><a th:href="@{/friends/form(id=${friend.code})}">Update</a></td>
 								</tr>
 							</tbody>
 						</table>
-						<th:block th:if="${currentPage.totalPages &gt; 1}"
-							th:replace="fragments/base :: paginator(${currentPage}, ${pageNumbers}, '/friends/list')"></th:block>
+						<th:block th:replace="fragments/base :: paginator(${currentPage}, ${pageNumbers}, '/friends/list')"></th:block>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
+	
+	<script th:replace="fragments/base :: scripts"></script>
 
 </body>
 </html>

@@ -14,6 +14,6 @@ public interface IFriendService {
 	Friend findByCode(UUID code);
 	List<Friend> findAll();
 	Page<Friend> findAll(int page, int size);
-	List<Friend> findAllByVaccinated(boolean vaccinated);
+	List<Friend> findAllByVaccinated(boolean firstDosed, boolean secondDosed);
 
 }
