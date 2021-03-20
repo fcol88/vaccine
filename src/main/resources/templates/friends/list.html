@@ -3,12 +3,13 @@
 <head th:replace="fragments/base :: head('Friend List')"></head>
 <body>
 
-	<section class="hero is-fullheight">
+	<section class="hero is-fullheight" role="main">
 		<div th:replace="fragments/base :: navbar('friends')"></div>
 		<div class="hero-body">
 			<div class="container">
 				<div class="columns is-centered">
 					<div class="column is-5">
+						<h1 class="is-sr-only">Friend list</h1>
 						<th:block th:if="${currentPage.empty}">
 							<div class="columns is-centered">
 								<div class="column is-half">

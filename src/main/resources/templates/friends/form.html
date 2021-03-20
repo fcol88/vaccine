@@ -3,7 +3,7 @@
 <head th:replace="fragments/base :: head('Friend form')"></head>
 <body>
 
-	<section class="hero is-fullheight">
+	<section class="hero is-fullheight" role="main">
 		<th:block th:if="${friend.code == null}">
 			<div th:replace="fragments/base :: navbar('addfriend')"></div>
 		</th:block>
@@ -15,13 +15,14 @@
 				<div class="columns is-centered">
 					<div class="column is-one-third">
 						<form th:action="${form}" th:object="${friend}" method="POST">
+							<h1 class="is-sr-only">Friend form</h1>
 							<input type="hidden" th:field="*{code}">
 							<div class="field">
-								<label class="label">Name</label>
+								<label class="label" for="name">Name</label>
 								<div class="control has-icons-left"
 									th:classappend="${#fields.hasErrors('name')} ? has-icons-right">
 									<input class="input" type="text" th:field="*{name}"
-										placeholder="Who are you adding?"
+										placeholder="Who are you adding?" autocomplete="off"
 										th:classappend="${#fields.hasErrors('name')} ? is-danger">
 									<span class="icon is-small is-left">
 										<em class="fas fa-user"></em>
@@ -35,28 +36,32 @@
 									class="help is-danger" th:errors="*{name}"></p>
 							</div>
 							<div class="field">
-								<label class="label">Have they had their first dose?</label>
-								<div class="control">
-									<label class="radio">
-										<input type="radio" th:field="*{firstDose}" th:value="${true}"> Yes
-									</label>
-									<label class="radio">
-										<input type="radio" th:field="*{firstDose}" th:value="${false}"> No
-									</label>								
-								</div>
-								<p th:if="${#fields.hasErrors('firstDose')}" class="help is-danger" th:errors="*{firstDose}"></p>
+								<fieldset>
+									<legend class="label">Have they had their first dose?</legend>
+									<div class="control">
+										<label class="radio">
+											<input type="radio" th:field="*{firstDose}" th:value="${true}"> Yes
+										</label>
+										<label class="radio">
+											<input type="radio" th:field="*{firstDose}" th:value="${false}"> No
+										</label>								
+									</div>
+									<p th:if="${#fields.hasErrors('firstDose')}" class="help is-danger" th:errors="*{firstDose}"></p>
+								</fieldset>
 							</div>
 							<div class="field">
-								<label class="label">Have they had their second dose?</label>
-								<div class="control">
-									<label class="radio">
-										<input type="radio" th:field="*{secondDose}" th:value="${true}"> Yes
-									</label>
-									<label class="radio">
-										<input type="radio" th:field="*{secondDose}" th:value="${false}"> No
-									</label>								
-								</div>
-								<p th:if="${#fields.hasErrors('secondDose')}" class="help is-danger" th:errors="*{secondDose}"></p>
+								<fieldset>
+									<legend class="label">Have they had their second dose?</legend>
+									<div class="control">
+										<label class="radio">
+											<input type="radio" th:field="*{secondDose}" th:value="${true}"> Yes
+										</label>
+										<label class="radio">
+											<input type="radio" th:field="*{secondDose}" th:value="${false}"> No
+										</label>								
+									</div>
+									<p th:if="${#fields.hasErrors('secondDose')}" class="help is-danger" th:errors="*{secondDose}"></p>
+								</fieldset>
 							</div>
 							<div class="field is-grouped">
 								<div class="control">

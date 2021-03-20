@@ -4,7 +4,7 @@
 <body>
 
 	<section class="hero is-fullheight"
-		th:classappend="${secondVax == all} ? 'is-primary' : 'is-warning'">
+		th:classappend="${secondVax == all} ? 'is-primary' : 'is-warning'" role="main">
 		<div th:replace="fragments/base :: navbar('home')"></div>
 		<div class="hero-body">
 			<div class="container">
