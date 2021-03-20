@@ -15,5 +15,6 @@ public interface IFriendService {
 	List<Friend> findAll();
 	Page<Friend> findAll(int page, int size);
 	List<Friend> findAllByVaccinated(boolean firstDosed, boolean secondDosed);
+	void unfriend(Long id);
 
 }

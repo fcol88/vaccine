@@ -28,10 +28,13 @@ public class FriendController implements AbstractController {
 	
 	@GetMapping({"/","/list"})
 	public ModelAndView getList(@RequestParam(name="size", defaultValue="10") int size,
-			@RequestParam(name="page", defaultValue="1") int page, ModelAndView model) {
+			@RequestParam(name="page", defaultValue="1") int page, 
+			@RequestParam(name="unfriend", defaultValue="false") boolean unfriend,
+			ModelAndView model) {
 		
 		Page<Friend> friends = friendService.findAll(page, size);
 		
+		model.addObject("unfriend", unfriend);
 		model.setViewName("friends/list");
 		addPageObject(model, friends);
 		
@@ -75,6 +78,15 @@ public class FriendController implements AbstractController {
 			model.setViewName("redirect:list");
 			return model;
 		}
+		
+	}
+	
+	@GetMapping("/delete")
+	public ModelAndView delete(@RequestParam("id") Long id, ModelAndView model) {
+		
+		friendService.unfriend(id);
+		model.setViewName("redirect:list");
+		return model;
 		
 	}
 	

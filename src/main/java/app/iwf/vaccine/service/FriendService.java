@@ -59,6 +59,13 @@ public class FriendService implements IFriendService {
 		
 	}
 	
+	@Override
+	public void unfriend(Long id) {
+		
+		friendRepository.deleteById(id);
+		
+	}
+	
 	private Friend dtoToEntity(FriendDTO dto) {
 		
 		Friend friend;

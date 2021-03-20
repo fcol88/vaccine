@@ -32,6 +32,7 @@
 									<th scope="col">Vax'd?</th>
 									<th scope="col">Double-Vax'd?</th>
 									<th scope="col">Update</th>
+									<th th:if="${unfriend}" scope="col">Unfriend</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -40,6 +41,7 @@
 									<td th:text="${friend.firstDosed} ? 'Yes' : 'No'"></td>
 									<td th:text="${friend.secondDosed} ? 'Yes' : 'No'"></td>
 									<td><a th:href="@{/friends/form(id=${friend.code})}">Update</a></td>
+									<td th:if="${unfriend}"><a th:href="@{/friends/delete(id=${friend.id})}">Delete</a></td>
 								</tr>
 							</tbody>
 						</table>
