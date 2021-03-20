@@ -39,18 +39,6 @@ public class FriendController implements AbstractController {
 		
 	}
 	
-	@GetMapping("/view")
-	public ModelAndView getView(@RequestParam("id") UUID code, ModelAndView model) {
-		
-		Friend friend = friendService.findByCode(code);
-		
-		model.setViewName("friends/view");
-		model.addObject("friend", friend);
-		
-		return model;
-		
-	}
-	
 	@GetMapping("/form")
 	public ModelAndView getForm(@RequestParam(name="id", required=false) UUID code,
 			ModelAndView model) {
