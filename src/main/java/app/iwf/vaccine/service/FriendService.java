@@ -48,7 +48,7 @@ public class FriendService implements IFriendService {
 		
 		Pageable pageable = PageRequest.of(page - 1, size);
 		
-		return friendRepository.findAll(pageable);
+		return friendRepository.findAllByOrderByName(pageable);
 		
 	}
 

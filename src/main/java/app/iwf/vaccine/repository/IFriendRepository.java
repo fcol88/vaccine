@@ -16,6 +16,6 @@ public interface IFriendRepository extends JpaRepository<Friend, Long> {
 
 	Optional<Friend> findByCode(UUID code);
 	List<Friend> findByFirstDosedAndSecondDosed(boolean firstDosed, boolean secondDosed);
-	Page<Friend> findAll(Pageable pageable);
+	Page<Friend> findAllByOrderByName(Pageable pageable);
 	
 }
