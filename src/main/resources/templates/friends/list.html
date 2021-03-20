@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/base :: head('Friend List')"></head>
+<body>
+
+	<section class="hero is-fullheight">
+		<div th:replace="fragments/base :: navbar('friends')"></div>
+		<div class="hero-body">
+			<div class="container">
+				<div class="columns is-centered">
+					<div class="column is-three-quarters">
+						<table class="table">
+							<caption class="is-sr-only">Friend table</caption>
+							<thead>
+								<tr>
+									<th scope="col">Name</th>
+									<th scope="col">Vaccinated?</th>
+									<th scope="col">View</th>
+									<th scope="col">Update</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="friend : ${currentPage}">
+									<td th:text="${friend.name}"></td>
+									<td th:text="${friend.vaccinated} ? 'Yes' : 'No'"></td>
+									<td><a th:href="@{/friends/view(id=${friend.code})}">View</a></td>
+									<td><a th:href="@{/friends/edit(id=${friend.code})}">Update</a></td>
+								</tr>
+							</tbody>
+						</table>
+						<th:block th:if="${currentPage.totalPages &gt; 1}"
+							th:replace="fragments/base :: paginator(${currentPage}, ${pageNumbers}, '/friends/list')"></th:block>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+</body>
+</html>
