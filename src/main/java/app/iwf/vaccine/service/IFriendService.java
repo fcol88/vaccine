@@ -1,6 +1,5 @@
 package app.iwf.vaccine.service;
 
-import java.util.List;
 import java.util.UUID;
 
 import org.springframework.data.domain.Page;
@@ -12,9 +11,9 @@ public interface IFriendService {
 	
 	Friend saveOrUpdate(FriendDTO friend);
 	Friend findByCode(UUID code);
-	List<Friend> findAll();
+	long countAll();
 	Page<Friend> findAll(int page, int size);
-	List<Friend> findAllByVaccinated(boolean firstDosed, boolean secondDosed);
+	long countAllByVaccinated(boolean firstDosed, boolean secondDosed);
 	void unfriend(Long id);
 
 }

@@ -1,6 +1,5 @@
 package app.iwf.vaccine.repository;
 
-import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -15,7 +14,7 @@ import app.iwf.vaccine.entity.Friend;
 public interface IFriendRepository extends JpaRepository<Friend, Long> {
 
 	Optional<Friend> findByCode(UUID code);
-	List<Friend> findByFirstDosedAndSecondDosed(boolean firstDosed, boolean secondDosed);
+	long countByFirstDosedAndSecondDosed(boolean firstDosed, boolean secondDosed);
 	Page<Friend> findAllByOrderByName(Pageable pageable);
 	
 }

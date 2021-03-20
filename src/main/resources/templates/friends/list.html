@@ -14,17 +14,17 @@
 							<div class="columns is-centered">
 								<div class="column is-half">
 									<p>
-									<span class="icon-text">
-										<span class="icon has-text-info">
-											<em class="fas fa-info-circle"></em>
-										</span>
-										<span></span>
-									</span>
-									Oh. I guess nobody's here yet. Want to add a friend?</p>
+										<span class="icon-text"> <span
+											class="icon has-text-info"> <em
+												class="fas fa-info-circle"></em>
+										</span> <span></span>
+										</span> Oh. I guess nobody's here yet. Want to add a friend?
+									</p>
 								</div>
 							</div>
 						</th:block>
-						<table class="table is-centered" style="margin:auto" th:unless="${currentPage.empty}">
+						<table class="table is-centered" style="margin: auto"
+							th:unless="${currentPage.empty}">
 							<caption class="is-sr-only">Friend table</caption>
 							<thead>
 								<tr>
@@ -36,22 +36,28 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr th:each="friend : ${currentPage}">
-									<td th:text="${friend.name}"></td>
-									<td th:text="${friend.firstDosed} ? 'Yes' : 'No'"></td>
-									<td th:text="${friend.secondDosed} ? 'Yes' : 'No'"></td>
-									<td><a th:href="@{/friends/form(id=${friend.code})}">Update</a></td>
-									<td th:if="${unfriend}"><a th:href="@{/friends/delete(id=${friend.id})}">Delete</a></td>
+								<tr th:each="friend, i : ${currentPage}">
+									<td th:id="'name' + ${i.index}" th:text="${friend.name}"></td>
+									<td th:id="'firstDose' + ${i.index}"
+										th:text="${friend.firstDosed} ? 'Yes' : 'No'"></td>
+									<td th:id="'secondDose' + ${i.index}"
+										th:text="${friend.secondDosed} ? 'Yes' : 'No'"></td>
+									<td><a th:id="'update' + ${i.index} + 'Link'"
+										th:href="@{/friends/form(id=${friend.code})}">Update</a></td>
+									<td th:if="${unfriend}"><a
+										th:id="'delete' + ${i.index} + 'Link'"
+										th:href="@{/friends/delete(id=${friend.id})}">Delete</a></td>
 								</tr>
 							</tbody>
 						</table>
-						<th:block th:replace="fragments/base :: paginator(${currentPage}, ${pageNumbers}, '/friends/list')"></th:block>
+						<th:block
+							th:replace="fragments/base :: paginator(${currentPage}, ${pageNumbers}, '/friends/list')"></th:block>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
-	
+
 	<script th:replace="fragments/base :: scripts"></script>
 
 </body>

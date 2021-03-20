@@ -4,6 +4,7 @@ import java.util.UUID;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import app.iwf.vaccine.entity.Friend;
 import lombok.Data;
@@ -23,6 +24,7 @@ public class FriendDTO {
 	
 	private UUID code;
 	@NotEmpty(message = "Who are you?")
+	@Size(max=100, message="That's a long name. Do you have a nickname?")
 	private String name;
 	@NotNull(message = "Are ya vaccinated yet, son?")
 	private Boolean firstDose;

@@ -12,21 +12,22 @@
 <nav th:fragment="paginator(page, pageNumbers, url)"
 	class="pagination is-centered" role="navigation"
 	aria-label="pagination" th:if="${page.totalPages &gt; 1}">
-	<a class="pagination-previous" th:disabled="${page.number==0}"
+	<a id="prevLink" class="pagination-previous"
+		th:disabled="${page.number==0}"
 		th:href="${page.number==0} ? '#' : @{${url}(page=${page.number},size=${page.size})}">Previous</a>
-	<a class="pagination-next"
+	<a id="nextLink" class="pagination-next"
 		th:disabled="${page.number + 1==page.totalPages}"
 		th:href="${page.number + 1==page.totalPages} ? '#' : @{${url}(page=${page.number + 2},size=${page.size})}">Next
 		page</a>
 	<ul class="pagination-list">
-		<li th:if="${page.number &gt; 1}"><a class="pagination-link"
-			aria-label="Goto page 1"
+		<li th:if="${page.number &gt; 1}"><a id="firstLink"
+			class="pagination-link" aria-label="Goto page 1"
 			th:href="@{${url}(page=1,size=${page.size})}">1</a></li>
 		<li th:if="${page.number &gt; 2}"><span
 			class="pagination-ellipsis">&hellip;</span></li>
 		<li th:each="pageNumber : ${pageNumbers}"
 			th:if="${pageNumber &gt;= page.number and pageNumber &lt;= page.number + 2}">
-			<a class="pagination-link"
+			<a th:id="'page'+${pageNumber}+'Link'" class="pagination-link"
 			th:aria-label="'Goto page ' + ${pageNumber}" th:text="${pageNumber}"
 			th:classappend="${pageNumber == page.number + 1} ? is-current"
 			th:href="@{${url}(page=${pageNumber},size=${page.size})}"></a>
@@ -34,7 +35,7 @@
 		<li th:unless="${page.number + 3 &gt;= page.totalPages}"><span
 			class="pagination-ellipsis">&hellip;</span></li>
 		<li th:unless="${page.number + 2 &gt;= page.totalPages}"><a
-			class="pagination-link"
+			id="lastLink" class="pagination-link"
 			th:aria-label="'Goto page ' + ${page.totalPages}"
 			th:href="@{${url}(page=${page.totalPages},size=${page.size})}"
 			th:text="${page.totalPages}"></a></li>
@@ -45,23 +46,24 @@
 	<nav class="navbar" aria-label="Navigation">
 		<div class="container">
 			<div class="navbar-brand">
-				<a class="navbar-item" th:href="@{/}">
-					<span class="title">IWF</span>
-				</a>
-				<span class="navbar-burger" data-target="navbarMenuHeroA">
-					<span></span>
-					<span></span>
-					<span></span>
+				<a class="navbar-item" th:href="@{/}"> <span id="logoLink"
+					class="title">IWF</span>
+				</a> <span class="navbar-burger" data-target="navbarMenuHeroA"> <span></span>
+					<span></span> <span></span>
 				</span>
 			</div>
 			<div id="navbarMenuHeroA" class="navbar-menu">
 				<div class="navbar-end">
-					<a class="navbar-item" th:href="@{/}" th:classappend="${selected == 'home'} ? is-active">Home</a>
-					<a class="navbar-item" th:href="@{/friends/form}" th:classappend="${selected == 'addfriend'} ? is-active">Add a friend</a>
-					<a class="navbar-item" th:href="@{/friends/}" th:classappend="${selected == 'friends'} ? is-active">Friends</a>
+					<a id="homeLink" class="navbar-item" th:href="@{/}"
+						th:classappend="${selected == 'home'} ? is-active">Home</a> <a
+						id="friendFormLink" class="navbar-item" th:href="@{/friends/form}"
+						th:classappend="${selected == 'addfriend'} ? is-active">Add a
+						friend</a> <a id="friendListLink" class="navbar-item"
+						th:href="@{/friends/}"
+						th:classappend="${selected == 'friends'} ? is-active">Friends</a>
 				</div>
 			</div>
-		</div>	
+		</div>
 	</nav>
 </div>
 

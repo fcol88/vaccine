@@ -4,7 +4,8 @@
 <body>
 
 	<section class="hero is-fullheight"
-		th:classappend="${secondVax == all} ? 'is-primary' : 'is-warning'" role="main">
+		th:classappend="${secondVax == all} ? 'is-primary' : 'is-warning'"
+		role="main">
 		<div th:replace="fragments/base :: navbar('home')"></div>
 		<div class="hero-body">
 			<div class="container">
@@ -61,15 +62,17 @@
 								still waiting to be vaccinated.
 							</p>
 						</div>
-						<div th:if="${all &gt; 0 and all == secondVax}" class="block has-text-centered">
-							<p class="is-size-2 has-text-weight-semibold">Oh, frabjous day! Callooh, callay! The coronavirus has gone away!</p>
+						<div th:if="${all &gt; 0 and all == secondVax}"
+							class="block has-text-centered">
+							<p class="is-size-2 has-text-weight-semibold">Oh, frabjous
+								day! Callooh, callay! The coronavirus has gone away!</p>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
-	
+
 	<script th:replace="fragments/base :: scripts"></script>
 
 </body>

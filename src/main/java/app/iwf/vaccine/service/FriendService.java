@@ -1,6 +1,5 @@
 package app.iwf.vaccine.service;
 
-import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -37,9 +36,9 @@ public class FriendService implements IFriendService {
 	}
 
 	@Override
-	public List<Friend> findAll() {
+	public long countAll() {
 		
-		return friendRepository.findAll();
+		return friendRepository.count();
 		
 	}
 	
@@ -53,9 +52,9 @@ public class FriendService implements IFriendService {
 	}
 
 	@Override
-	public List<Friend> findAllByVaccinated(boolean firstDosed, boolean secondDosed) {
+	public long countAllByVaccinated(boolean firstDosed, boolean secondDosed) {
 		
-		return friendRepository.findByFirstDosedAndSecondDosed(firstDosed, secondDosed);
+		return friendRepository.countByFirstDosedAndSecondDosed(firstDosed, secondDosed);
 		
 	}
 	

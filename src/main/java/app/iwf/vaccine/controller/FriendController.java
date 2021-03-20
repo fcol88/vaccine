@@ -27,7 +27,8 @@ public class FriendController implements AbstractController {
 	private IFriendService friendService;
 	
 	@GetMapping({"/","/list"})
-	public ModelAndView getList(@RequestParam(name="size", defaultValue="10") int size,
+	public ModelAndView getList(
+			@RequestParam(name="size", defaultValue="10") int size,
 			@RequestParam(name="page", defaultValue="1") int page, 
 			@RequestParam(name="unfriend", defaultValue="false") boolean unfriend,
 			ModelAndView model) {
@@ -67,7 +68,8 @@ public class FriendController implements AbstractController {
 				friend.getFirstDose().equals(Boolean.FALSE) &&
 					friend.getSecondDose().equals(Boolean.TRUE)) {
 			result.rejectValue("secondDose", "error.friend", 
-					"You trying to break something? How exactly can you have your second dose first, hmm?");
+					"You trying to break something? How exactly can "
+					+ "you have your second dose first, hmm?");
 		}
 		
 		if(result.hasErrors()) { 
