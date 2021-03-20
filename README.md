@@ -18,13 +18,15 @@ That's it, really.
 
 Well, it's a Spring Boot application. It could probably be much simpler, or use another, more efficient framework, but I mostly build Spring Boot apps for a living so Spring Boot it is.
 
-Probably the simplest way to use it is to clone using Git and then follow these steps:
+Probably the simplest way to use it is to clone using Git, swap ddl-auto in src/main/resources/application.properties to create and then follow these steps:
 
 https://devcenter.heroku.com/articles/deploying-spring-boot-apps-to-heroku
 
 You'll need to include a database, since it has a piddly little table to store your users in.
 
 Once you've followed those steps, you should be able to just...visit the URL it deployed to and see it working.
+
+Once you've deployed once, probably best to swap back to ddl-auto none just to stop it dropping everything. I was too lazy to add a proper build tool for the database.
 
 If you've never used Git before, basically just install it (if you need to install it), open a terminal, and type "git clone " sans quotes, followed by a link you've copied from the little green button at the top of this page.
 
