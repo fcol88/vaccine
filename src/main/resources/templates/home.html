@@ -74,8 +74,8 @@
 	</section>
 
 	<script th:replace="fragments/base :: scripts"></script>
-	<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
-	<script th:src="@{/js/confetti.js}"></script>
+	<script th:if="${all &gt; 0 and all == secondVax}" src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+	<script th:if="${all &gt; 0 and all == secondVax}" th:src="@{/js/confetti.js}"></script>
 
 </body>
 </html>
