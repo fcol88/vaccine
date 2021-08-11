@@ -1,11 +1,20 @@
-$(document).ready(function() {
+document.addEventListener('DOMContentLoaded', () => {
 
-	// Check for click events on the navbar burger icon
-	$(".navbar-burger").click(function() {
+  const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
 
-		// Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
-		$(".navbar-burger").toggleClass("is-active");
-		$(".navbar-menu").toggleClass("is-active");
+  if ($navbarBurgers.length > 0) {
 
-	});
+    $navbarBurgers.forEach( el => {
+      el.addEventListener('click', () => {
+
+        const target = el.dataset.target;
+        const $target = document.getElementById(target);
+
+        el.classList.toggle('is-active');
+        $target.classList.toggle('is-active');
+
+      });
+    });
+  }
+
 });
