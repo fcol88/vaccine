@@ -35,3 +35,4 @@ build/
 mvnw.cmd
 node_modules/
 package-lock.json
+src/main/resources/static/css/raw/
